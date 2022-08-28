@@ -1,0 +1,11 @@
+.listTitleContainer {
+  background-color: lightblue;
+}
+.listTitle {
+  display: flex;
+  font-size: 8px;
+}
+
+h2 {
+  width: 130px;
+}

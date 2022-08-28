@@ -1,0 +1,12 @@
+.listContainer {
+}
+
+.list {
+  display: flex;
+
+  font-size: 7px;
+}
+.list > h2 {
+  font-weight: normal;
+  width: 130px;
+}

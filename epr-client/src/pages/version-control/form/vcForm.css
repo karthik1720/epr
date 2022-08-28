@@ -1,0 +1,13 @@
+.vcForm {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+}
+
+.vcFormLabel {
+  display: inline-block;
+  width: 150px;
+}
+.vcFormItem {
+  width: 1000px;
+}

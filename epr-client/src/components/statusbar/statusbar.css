@@ -1,0 +1,9 @@
+.statusContainer {
+  display: flex;
+  background-color: aliceblue;
+  padding-left: 5px;
+}
+
+.statusItem {
+  padding-right: 15px;
+}
