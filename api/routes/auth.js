@@ -1,11 +1,10 @@
 import express from "express";
-import { register, regTable } from "../controllers/authController.js";
+import { login, register } from "../controllers/authController.js";
 const router = express.Router();
 import db from "../dbConnection.js";
 
 router.post("/register", register);
-router.post("/login");
-router.get("/regtable", regTable);
+router.post("/login", login);
 
 router.get("/check", (req, res, next) => {
   db.query("select * from auth", (err, result) => {
