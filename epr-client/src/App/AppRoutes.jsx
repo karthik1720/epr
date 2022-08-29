@@ -5,6 +5,7 @@ import About from "../pages/about/About.jsx";
 import VcForm from "../pages/version-control/form/VcForm";
 import VcView from "../pages/version-control/view/Vc.jsx";
 import VersionControl from "../pages/version-control/VersionControl";
+import Login from "../pages/auth/Login.jsx";
 function PageRoutes() {
   return (
     <Routes>
@@ -13,6 +14,7 @@ function PageRoutes() {
       <Route path="/vc/form" element={<VcForm></VcForm>}></Route>
       <Route path="/vc/view" element={<VcView></VcView>}></Route>
       <Route path="/about" element={<About></About>}></Route>
+      <Route path="/login" element={<Login></Login>}></Route>
     </Routes>
   );
 }
