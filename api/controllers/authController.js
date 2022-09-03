@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import db from "../dbConnection.js";
+import { createError } from "../utils/error.js";
 export const register = async (req, res, next) => {
   try {
     db.connect();
@@ -20,6 +21,7 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
+    console.log("called");
     const { name, password } = req.body;
     const sql = `select name, password from auth where name = '${name}'`;
     db.query(sql, async (err, result) => {
@@ -36,11 +38,23 @@ export const login = async (req, res, next) => {
         const isCorrect = await bcrypt.compare(password, result[0].password);
         console.log(isCorrect);
         if (isCorrect) {
-          res.send("logged in");
+          const token = jwt.sign({ name: req.body.name }, process.env.JWT, {
+            expiresIn: "20s",
+          });
+
+          res
+            .cookie("token", token, {
+              httpOnly: true,
+            })
+            .status(200)
+            .json(token);
+          console.log();
         } else {
-          res.send("wrong info");
+          return next(createError(400, "wrong info"));
         }
       }
     });
-  } catch {}
+  } catch (error) {
+    next(error);
+  }
 };
