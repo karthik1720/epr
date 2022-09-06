@@ -39,7 +39,7 @@ function Login() {
     };
 
     await axios
-      .post("http://localhost:8080/api/login", loginPayload)
+      .post("/api/login", loginPayload)
       .then((response) => {
         //get token from response
         const token = response.data;

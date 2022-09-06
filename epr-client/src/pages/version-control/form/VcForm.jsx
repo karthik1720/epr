@@ -1,8 +1,12 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./vcForm.css";
+import FormData from "./FormData.jsx";
 function VcForm() {
+  let navigate = useNavigate();
+  console.log("form");
   const [data, setData] = useState({
     dept: "",
     lpar: "",
@@ -31,23 +35,30 @@ function VcForm() {
       tor: data.tor,
       des: data.des,
     };
-    await axios
-      .post("http://localhost:8080/api/vcform", data)
-      .then((response) => {
-        console.log("done");
-      });
+    await axios.post("/api/vcform", data).then((response) => {
+      console.log("done");
+      navigate("./../view");
+    });
   };
+
+  const formSelectionData = ["hi", "Hello"];
 
   return (
     <div className="vcContainer">
       <div className="vcFormItem">
+        <FormData
+          handleChange={handleChange}
+          value={formSelectionData}
+        ></FormData>
+      </div>
+      <div className="vcFormItem">
         <label className="vcFormLabel">Department</label>
-        <input
+        {/* <input
           value={data.dept}
           name="dept"
           onChange={handleChange}
           type="text"
-        ></input>
+        ></input> */}
       </div>
       <div className="vcFormItem">
         <label className="vcFormLabel">LPAR</label>

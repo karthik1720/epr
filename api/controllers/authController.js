@@ -4,7 +4,6 @@ import db from "../dbConnection.js";
 import { createError } from "../utils/error.js";
 export const register = async (req, res, next) => {
   try {
-    db.connect();
     const { name, email, password } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);

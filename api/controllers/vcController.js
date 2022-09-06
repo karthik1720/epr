@@ -14,6 +14,7 @@ export const vcAdd = (req, res, next) => {
 
 export const vcView = (req, res, next) => {
   try {
+    console.log("called");
     db.connect();
     db.query("select * from vc", (err, result) => {
       if (err) return res.json(err);
